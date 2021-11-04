@@ -9,17 +9,54 @@ The purpose of this analysis is to find out if refactoring the code made it run 
 
 ### Analysis of the Refactored Code
 These are the execution time for the 2017 and 2018 using the original code:
-![ stock_analysis_2017]( https://github.com/Robeliom15/stocksanalysis/blob/main/Resources/stock_analysis_2017.png?raw=true)
+![stock_analysis_2017](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/stock_analysis_2017.png?raw=true)
 
-![ stock_analysis_2018]( https://github.com/Robeliom15/stocksanalysis/blob/main/Resources/stock_analysis_2018.png?raw=true)
+![stock_analysis_2018](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/stock_analysis_2018.png?raw=true)
 
 These are the execution time for the new refactored code:
-![VBA_challenge_2017](https://github.com/Robeliom15/stocksanalysis/blob/main/Resources/VBA_challenge_2017.png?raw=true)
+![VBA_challenge_2017](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/VBA_challenge_2017.png?raw=true)
 
-![VBA_challenge_2018](https://github.com/Robeliom15/stocksanalysis/blob/main/Resources/VBA_challenge_2018.png?raw=true)
+![VBA_challenge_2018](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/VBA_challenge_2018.png?raw=true)
 
 We can see that the refactored code has greatly reduced the time needed to execute the code. Additional, the 2018 year executes much faster than the 2017 year despite having the same amount of data. 
 
+The orginal code looks like:
+```
+'4) Loop through tickers
+   For i = 0 to 11
+       ticker = tickers(i)
+       totalVolume = 0
+       '5) loop through rows in the data
+       Worksheets("2018").Activate
+       For j = 2 to RowCount
+           '5a) Get total volume for current ticker
+           If Cells(j, 1).Value = ticker Then
+
+               totalVolume = totalVolume + Cells(j, 8).Value
+
+           End If
+           '5b) get starting price for current ticker
+           If Cells(j - 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
+
+               startingPrice = Cells(j, 6).Value
+
+           End If
+
+           '5c) get ending price for current ticker
+           If Cells(j + 1, 1).Value <> ticker And Cells(j, 1).Value = ticker Then
+
+               endingPrice = Cells(j, 6).Value
+
+           End If
+       Next j
+       '6) Output data for current ticker
+       Worksheets("All Stocks Analysis").Activate
+       Cells(4 + i, 1).Value = ticker
+       Cells(4 + i, 2).Value = totalVolume
+       Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
+
+   Next i
+```
 
 The code refactored looks like this:
 ```
