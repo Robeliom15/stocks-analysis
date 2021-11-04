@@ -9,12 +9,15 @@ The purpose of this analysis is to find out if refactoring the code made it run 
 
 ### Analysis of the Refactored Code
 These are the execution time for the 2017 and 2018 using the original code:
+
 ![stock_analysis_2017](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/stock_analysis_2017.png?raw=true)
 ![stock_analysis_2018](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/stock_analysis_2018.png?raw=true)
 
 These are the execution time for the new refactored code:
+
 ![VBA_challenge_2017](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/VBA_challenge_2017.png?raw=true)
 ![VBA_challenge_2018](https://github.com/Robeliom15/stocks-analysis/blob/main/Resources/VBA_challenge_2018.png?raw=true)
+
 We can see that the refactored code has greatly reduced the time needed to execute the code. Additional, the 2018 year executes much faster than the 2017 year despite having the same amount of data. 
 
 The orginal code looks like:
